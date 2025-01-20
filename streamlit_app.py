@@ -1,3 +1,4 @@
+from turtle import onclick
 import streamlit as st
 import pandas as pd
 
@@ -9,6 +10,36 @@ df = pd.DataFrame({
 
 st.title("Visualisation")
 
-
 st.dataframe(df)
 
+firstExpander = st.sidebar.expander('test 1')
+
+firstExpander.selectbox("Year",
+                        df['year'].unique()
+                        )
+
+firstExpander.selectbox("A",
+                        df['A'].unique()
+                        )
+
+firstExpander.selectbox("B",
+                        df['B'].unique()
+                        )
+
+secondExpander = st.sidebar.expander('test 2')
+
+secondExpanderForm = secondExpander.form('Form')
+
+secondExpanderForm.selectbox("A",
+                        df['A'].unique()
+                        )
+
+secondExpanderForm.selectbox("B",
+                        df['B'].unique()
+                        )
+
+secondExpanderForm.selectbox("Year",
+                        df['year'].unique()
+                        )
+
+secondExpanderForm.form_submit_button("Submit", None, None, None, None)
