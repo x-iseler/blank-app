@@ -17,29 +17,28 @@ firstExpander = st.sidebar.expander('test 1')
 firstExpander.selectbox("Year",
                         df['year'].unique()
                         )
-
+firstExpander.button("Filter", "1", None, None, None,None)
 firstExpander.selectbox("A",
                         df['A'].unique()
                         )
-
+firstExpander.button("Filter", "2", None, None, None,None)
 firstExpander.selectbox("B",
                         df['B'].unique()
                         )
+firstExpander.button("Filter", "3", None, None, None,None)
 
 secondExpander = st.sidebar.expander('test 2')
 
-secondExpanderForm = secondExpander.form('Form')
+secondExpanderForm = secondExpander.form('Form2')
 
 secondExpanderForm.selectbox("A",
                         df['A'].unique()
                         )
-
 secondExpanderForm.selectbox("B",
                         df['B'].unique()
                         )
-
 secondExpanderForm.selectbox("Year",
                         df['year'].unique()
                         )
-
 secondExpanderForm.form_submit_button("Submit", None, None, None, None)
+
