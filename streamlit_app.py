@@ -20,7 +20,7 @@ st.title("Visualisation")
 
 #listDataFrame = st.dataframe(df)
 
-firstExpander = st.sidebar.expander('test 1')
+firstExpander = st.sidebar.expander('Filters')
 yearFilterValue = firstExpander.selectbox("Year",
                         listYear
                         )
