@@ -12,26 +12,39 @@ df = pd.DataFrame({
     'year':listYear
     })
 
-st.title("Visualisation")
-
 listA = ['All'] + list(sorted(set(listA)))
 listB = ['All'] + list(sorted(set(listB)))
 listYear = ['All'] + list(sorted(set(listYear)))
 
-st.dataframe(df)
+st.title("Visualisation")
+
+#listDataFrame = st.dataframe(df)
 
 firstExpander = st.sidebar.expander('test 1')
-firstExpander.selectbox("Year",
+yearFilterValue = firstExpander.selectbox("Year",
                         listYear
                         )
-firstExpander.selectbox("A",
+if yearFilterValue != "All":
+    df = df[df['year']==yearFilterValue]
+#if yearFilterValue == "All":
+#    df = df[df['year']]
+
+#listDataFrame = st.dataframe(df)
+
+aFilterValue = firstExpander.selectbox("A",
                         listA
                         )
-firstExpander.button("Filter", "2", None, None, None,None)
-firstExpander.selectbox("B",
+if aFilterValue != "All":
+    df = df[df['A']==aFilterValue]
+
+
+bFilterValue = firstExpander.selectbox("B",
                         listB
                         )
-firstExpander.button("Filter", "3", None, None, None,None)
+if bFilterValue != "All":
+    df = df[df['B']==bFilterValue]
+
+listDataFrame = st.dataframe(df)
 
 secondExpander = st.sidebar.expander('test 2')
 
