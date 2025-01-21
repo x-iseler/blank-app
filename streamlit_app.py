@@ -1,7 +1,5 @@
-from turtle import onclick
 import streamlit as st
 import pandas as pd
-import pandas as pdAll
 
 df = pd.DataFrame({
     'A':[0,1,2,3,4,5,6,7,8,9],
@@ -9,7 +7,7 @@ df = pd.DataFrame({
     'year':['->2022','2023','->2022','2023','2024','2025','2024','2025','2024','2025']
     })
 
-dfAll = pdAll.DataFrame({
+dfAll = pd.DataFrame({
     'A':['All'],
     'B':['All'],
     'year':['All']
