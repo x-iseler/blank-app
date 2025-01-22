@@ -44,20 +44,48 @@ bFilterValue = firstExpander.selectbox("B",
 if bFilterValue != "All":
     df = df[df['B']==bFilterValue]
 
-listDataFrame = st.dataframe(df)
+selectedDataFrame = st.dataframe(df,
+                    key="data",
+                    hide_index=True,
+                    on_select="rerun",
+                    selection_mode="single-row")
 
-secondExpander = st.sidebar.expander('test 2')
 
-secondExpanderForm = secondExpander.form('Form2')
+selectedRows = selectedDataFrame.selection.rows
+filteredDf = df.iloc[selectedRows]
 
-secondExpanderForm.selectbox("A",
-                        df['A'].unique()
-                        )
-secondExpanderForm.selectbox("B",
-                        df['B'].unique()
-                        )
-secondExpanderForm.selectbox("Year",
-                        df['year'].unique()
-                        )
-secondExpanderForm.form_submit_button("Submit", None, None, None, None)
+#st.dataframe(filteredDf)
+
+if len(filteredDf) > 0 :
+    expanderLabel = "Edit"
+else :
+    expanderLabel = "Add"
+
+secondExpander = st.sidebar.expander(expanderLabel,
+                    expanded=True)
+
+#def formAdd() :
+#    df['A'][0] = '5'
+
+if len(filteredDf) > 0 :
+    secondExpanderForm = secondExpander.form('Form2');
+    secondExpanderForm.selectbox("A",
+                            filteredDf['A'].unique()
+                            );
+    secondExpanderForm.selectbox("B",
+                            filteredDf['B'].unique()
+                            );
+    secondExpanderForm.selectbox("Year",
+                            filteredDf['year'].unique()
+                            );                    
+    secondExpanderForm.form_submit_button("Submit", None, None, None, None)
+else:
+    secondExpanderForm = secondExpander.form('Form2');
+    listA[0] = "";
+    secondExpanderForm.selectbox("A", listA);
+    listB[0] = "";
+    secondExpanderForm.selectbox("B", listB);
+    listYear[0] = "";
+    secondExpanderForm.selectbox("Year", listYear);                    
+    secondExpanderForm.form_submit_button("Submit", None, None)
 
