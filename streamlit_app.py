@@ -67,25 +67,55 @@ secondExpander = st.sidebar.expander(expanderLabel,
 #def formAdd() :
 #    df['A'][0] = '5'
 
+listA[0] = "";
+listB[0] = "";
+listYear[0] = "";
+
+selectedRowsIndex = 0
+#if len(filteredDf) > 0 :
+#    selectedRowsIndex = selectedRows[0]+1
+
+selectedARowsIndex = 0
 if len(filteredDf) > 0 :
-    secondExpanderForm = secondExpander.form('Form2');
-    secondExpanderForm.selectbox("A",
-                            filteredDf['A'].unique()
-                            );
-    secondExpanderForm.selectbox("B",
-                            filteredDf['B'].unique()
-                            );
-    secondExpanderForm.selectbox("Year",
-                            filteredDf['year'].unique()
-                            );                    
-    secondExpanderForm.form_submit_button("Submit", None, None, None, None)
-else:
-    secondExpanderForm = secondExpander.form('Form2');
-    listA[0] = "";
-    secondExpanderForm.selectbox("A", listA);
-    listB[0] = "";
-    secondExpanderForm.selectbox("B", listB);
-    listYear[0] = "";
-    secondExpanderForm.selectbox("Year", listYear);                    
-    secondExpanderForm.form_submit_button("Submit", None, None)
+    i = 0
+    for x in listA :
+        if listA[i] == list(filteredDf['A'])[0] :
+            selectedARowsIndex = i
+        i = i + 1
+
+selectedBRowsIndex = 0
+if len(filteredDf) > 0 :
+    i = 0
+    for x in listB :
+        if listB[i] == list(filteredDf['B'])[0] :
+            selectedBRowsIndex = i
+        i = i + 1
+
+selectedYearRowsIndex = 0
+if len(filteredDf) > 0 :
+    i = 0
+    for x in (listYear) :
+        if listYear[i] == str(list(filteredDf['year'])[0]) :
+            selectedYearRowsIndex = i
+        i = i + 1
+
+
+#if len(filteredDf) > 0 :
+#    secondExpanderForm = secondExpander.form('Form2');
+#    secondExpanderForm.selectbox("A",
+#                            filteredDf['A'].unique()
+#                            );
+#    secondExpanderForm.selectbox("B",
+#                            filteredDf['B'].unique()
+#                            );
+#    secondExpanderForm.selectbox("Year",
+#                            filteredDf['year'].unique()
+#                            );                    
+#    secondExpanderForm.form_submit_button("Submit", None, None, None, None)
+#else:
+secondExpanderForm = secondExpander.form('Form2');
+secondExpanderForm.selectbox("A", listA, index=selectedARowsIndex);
+secondExpanderForm.selectbox("B", listB, index=selectedBRowsIndex);
+secondExpanderForm.selectbox("Year", listYear, index=selectedYearRowsIndex);                    
+secondExpanderForm.form_submit_button("Submit", None, None)
 
