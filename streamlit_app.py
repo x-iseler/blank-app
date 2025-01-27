@@ -122,14 +122,18 @@ if modelFilterValue != "All":
 #if bFilterValue != "All":
 #    df = df[df['B']==bFilterValue]
 
-selectedDataFrame = st.dataframe(df,
-                    use_container_width=True,
-                    width=2500,
+with st.container(border=True):
+    selectedDataFrame = st.dataframe(df,
+                    use_container_width=False,
                     key="data",
                     hide_index=True,
                     on_select="rerun",
                     selection_mode="single-row",
                     )
+
+
+
+
 
 selectedRows = selectedDataFrame.selection.rows
 filteredDf = df.iloc[selectedRows]
