@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-listA = [0,1,2,3,4,5,6,7,0,1,2,3]
-listB = [10,11,12,13,14,15,16,17,10,11,12,13]
+#listA = [0,1,2,3,4,5,6,7,0,1,2,3]
+#listB = [10,11,12,13,14,15,16,17,10,11,12,13]
 listYear =          ['->2022','2023','->2022','2023','2024','2025','2024','2025', '2023','2024','2025','2024']
 listBrand =         ['Nokia', 'Nokia', 'Nokia', 'Nokia', 'Microsoft', 'Microsoft', 'Microsoft', 'Microsoft', 'BlackBerry', 'BlackBerry', 'BlackBerry', 'BlackBerry']
 listCommName =      ['3210', '3310', '3310 plus', '3310 max', 'MS 3210', 'MS 3310', 'MS 3310 plus', 'MS 3310 max', 'BB 3210', 'BB 3310', 'BB 3310 plus', 'BB 3310 max']
@@ -29,8 +29,8 @@ listComment =       ['comm2', 'comm3', 'comm4', 'comm5', 'commmentaire ...', 'co
 
 
 df = pd.DataFrame({
-    'A':listA,
-    'B':listB,
+    #'A':listA,
+    #'B':listB,
     'year':listYear,
     'Brand':listBrand,
     'Commercial Name':listCommName,
@@ -55,8 +55,8 @@ df = pd.DataFrame({
     'Comment':listComment
     })
 
-listA = ['All'] + list(sorted(set(listA)))
-listB = ['All'] + list(sorted(set(listB)))
+#listA = ['All'] + list(sorted(set(listA)))
+#listB = ['All'] + list(sorted(set(listB)))
 listYear = ['All'] + list(sorted(set(listYear)))
 listBrand = ['All'] + list(sorted(set(listBrand)))
 listCommName = ['All'] + list(sorted(set(listCommName)))
@@ -151,8 +151,8 @@ secondExpander = st.sidebar.expander(expanderLabel,
 #def formAdd() :
 #    df['A'][0] = '5'
 
-listA[0] = "";
-listB[0] = "";
+#listA[0] = "";
+#listB[0] = "";
 listYear[0] = "";
 listBrand[0] = "";
 listCommName[0] = "";
@@ -180,21 +180,21 @@ selectedRowsIndex = 0
 #if len(filteredDf) > 0 :
 #    selectedRowsIndex = selectedRows[0]+1
 
-selectedARowsIndex = 0
-if len(filteredDf) > 0 :
-    i = 0
-    for x in listA :
-        if listA[i] == list(filteredDf['A'])[0] :
-            selectedARowsIndex = i
-        i = i + 1
+#selectedARowsIndex = 0
+#if len(filteredDf) > 0 :
+#    i = 0
+#    for x in listA :
+#        if listA[i] == list(filteredDf['A'])[0] :
+#            selectedARowsIndex = i
+#        i = i + 1
 
-selectedBRowsIndex = 0
-if len(filteredDf) > 0 :
-    i = 0
-    for x in listB :
-        if listB[i] == list(filteredDf['B'])[0] :
-            selectedBRowsIndex = i
-        i = i + 1
+#selectedBRowsIndex = 0
+#if len(filteredDf) > 0 :
+#    i = 0
+#    for x in listB :
+#        if listB[i] == list(filteredDf['B'])[0] :
+#            selectedBRowsIndex = i
+#        i = i + 1
 
 selectedYearRowsIndex = 0
 if len(filteredDf) > 0 :
@@ -393,8 +393,8 @@ def formSubmitButtonClicked() :
 
 
 secondExpanderForm = secondExpander.form('Form2');
-selectedA = secondExpanderForm.selectbox("A", listA, index=selectedARowsIndex);
-selectedB = secondExpanderForm.selectbox("B", listB, index=selectedBRowsIndex);
+#selectedA = secondExpanderForm.selectbox("A", listA, index=selectedARowsIndex);
+#selectedB = secondExpanderForm.selectbox("B", listB, index=selectedBRowsIndex);
 selectedYear = secondExpanderForm.selectbox("Year", listYear, index=selectedYearRowsIndex);
 selectedBrand = secondExpanderForm.selectbox("Brand", listBrand, index=selectedBrandRowsIndex);
 selectedCommName = secondExpanderForm.selectbox("Commercial Name", listCommName, index=selectedCommNameRowsIndex);
